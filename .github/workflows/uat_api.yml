@@ -17,15 +17,39 @@ jobs:
       contents: write
 
     steps:
-      - uses: actions/checkout@v4
+#      - uses: actions/checkout@v4
+
+      - name: Checkout of TEST repo
+        uses: actions/checkout@v4
+        with:
+          path: qa-challenge-tests
+
+      - name: Checkout of DEV repo
+        uses: actions/checkout@v4
+        with:
+          repository: openinnovationai/recruiting-qa-challenge
+          path: recruiting-qa-challenge
 
       - uses: actions/setup-java@v4
         with:
           distribution: temurin
           java-version: 21
 
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+         python-version: '3.9'
+
+      - name: Install Python dependencies and Run Python server script
+        run: |
+          cd recruiting-qa-challenge
+          pip install -r requirements.txt
+          fastapi dev application.py
+
       - name: Run API Tests
-        run: ./mvnw clean test
+        run: |
+          cd qa-challenge-tests
+          ./mvnw clean test
 
       - name: Get Allure history
         uses: actions/checkout@v4
