@@ -23,12 +23,9 @@ jobs:
       contents: write
 
     steps:
-      - uses: actions/checkout@v4
-        if: ${{ github.event.inputs.run == 'remote' }}
 
       - name: Clone TEST repo
         uses: actions/checkout@v4
-        if: ${{ github.event.inputs.run == 'local' }}
 
       - name: Clone remote DEV repo
         uses: actions/checkout@v4
@@ -48,7 +45,7 @@ jobs:
         with:
          python-version: '3.8'
 
-      - name: Install Python dependencies and Run Python server script
+      - name: Run Python server and tests against it
         if: ${{ github.event.inputs.run == 'local' }}
         run: |
           cd recruiting-qa-challenge
@@ -58,7 +55,7 @@ jobs:
           cd .. &&
           ./mvnw clean test
 
-      - name: Run API Tests
+      - name: Run API Tests against remote server
         if: ${{ github.event.inputs.run == 'remote' }}
         env:
           API_SERVER: "test.openinnovationai.com"

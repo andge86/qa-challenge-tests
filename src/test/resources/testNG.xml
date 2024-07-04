@@ -2,8 +2,9 @@
 <suite name="Regression Test Suite">
     <test name="Infer flow API Tests">
         <classes>
-<!--            <class name="com.qa.tests.ModelsTest" />-->
+            <class name="com.qa.tests.ModelsTest" />
             <class name="com.qa.tests.VersionsTest" />
+            <class name="com.qa.tests.InfersTest" />
         </classes>
     </test>
 </suite>

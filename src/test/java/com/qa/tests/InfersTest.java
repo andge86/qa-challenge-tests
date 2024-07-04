@@ -16,7 +16,7 @@ public class InfersTest {
         int random = 10000 + new Random().nextInt(90000);
         ModelRequest modelRequest = new ModelRequest("Model_A_" + random, "Andrii_" + random);
         VersionRequest versionRequest = new VersionRequest("Version 1 - Tiny Llama", "TinyLlama/TinyLlama-1.1B-Chat-v1.0");
-        final String PROMPT = "Please write Java method to calculate the sum of 2 numbers " + random + " and " + random + " and print it out to the console.";
+        final String PROMPT = "Please write Java method to calculate the sum of 2 numbers";
 
         ModelsService modelsService = new ModelsService();
         ModelResponse modelResponse = modelsService.postModelResponse(modelRequest);
@@ -25,10 +25,9 @@ public class InfersTest {
         VersionResponse versionResponse = versionsService.postVersionResponse(versionRequest);
 
         InfersService infersService = new InfersService(modelResponse.getUuid(), versionResponse.getUuid());
-       InferResponse inferResponse = infersService.postPromptResponse(new InferRequest(PROMPT));
-       Assert.assertTrue(inferResponse.getText().contains(PROMPT),
-               PROMPT + " is not present in " + inferResponse.getText());
-
+        InferResponse inferResponse = infersService.postPromptResponse(new InferRequest(PROMPT));
+        Assert.assertTrue(inferResponse.getText().contains(PROMPT),
+                PROMPT + " is not present in " + inferResponse.getText());
     }
 
 }
