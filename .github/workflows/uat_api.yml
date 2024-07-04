@@ -21,8 +21,6 @@ jobs:
 
       - name: Checkout of TEST repo
         uses: actions/checkout@v4
-        with:
-          path: qa-challenge-tests
 
       - name: Checkout of DEV repo
         uses: actions/checkout@v4
@@ -45,8 +43,8 @@ jobs:
           cd recruiting-qa-challenge
           pip install -r requirements.txt
           fastapi dev application.py &
-          sleep 200 &&
-          cd ../qa-challenge-tests &&
+          sleep 100 &&
+          cd .. &&
           ./mvnw clean test
 
       - name: Get Allure history
