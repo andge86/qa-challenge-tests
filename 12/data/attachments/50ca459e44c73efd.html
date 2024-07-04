@@ -1,0 +1,27 @@
+<div>POST to http://localhost:8000/models/85238ce7-164a-48b4-a075-1b9462a6fde2/versions</div>
+
+    <h4>Body</h4>
+    <div>
+    <pre class="preformated-text">
+{
+    &quot;name&quot;: &quot;Version 1 - Tiny Llama&quot;,
+    &quot;hugging_face_model&quot;: &quot;TinyLlama/TinyLlama-1.1B-Chat-v1.0&quot;
+}    </pre>
+    </div>
+
+    <h4>Headers</h4>
+    <div>
+            <div>Accept: */*</div>
+            <div>Content-Type: application/json</div>
+    </div>
+
+
+
+    <h4>Curl</h4>
+    <div>
+        curl -v -X POST &#39;http://localhost:8000/models/85238ce7-164a-48b4-a075-1b9462a6fde2/versions&#39; -H &#39;Accept: */*&#39; -H &#39;Content-Type: application/json&#39; -d &#39;{
+    &quot;name&quot;: &quot;Version 1 - Tiny Llama&quot;,
+    &quot;hugging_face_model&quot;: &quot;TinyLlama/TinyLlama-1.1B-Chat-v1.0&quot;
+}&#39;
+    </div>
+
