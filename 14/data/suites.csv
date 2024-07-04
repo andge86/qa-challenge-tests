@@ -1,0 +1,7 @@
+"Status","Start Time","Stop Time","Duration in ms","Parent Suite","Suite","Sub Suite","Test Class","Test Method","Name","Description"
+"passed","Thu Jul 04 23:54:29 GMT 2024","Thu Jul 04 23:54:29 GMT 2024","66","Regression Test Suite","Infer flow API Tests","com.qa.tests.ModelsTest","com.qa.tests.ModelsTest","deleteModelSuccessTest","deleteModelSuccessTest",""
+"failed","Thu Jul 04 23:54:29 GMT 2024","Thu Jul 04 23:54:29 GMT 2024","42","Regression Test Suite","Infer flow API Tests","com.qa.tests.ModelsTest","com.qa.tests.ModelsTest","createModelValidationTest","createModelValidationTest",""
+"passed","Thu Jul 04 23:54:26 GMT 2024","Thu Jul 04 23:54:29 GMT 2024","2966","Regression Test Suite","Infer flow API Tests","com.qa.tests.ModelsTest","com.qa.tests.ModelsTest","createModelSuccessTest","createModelSuccessTest",""
+"passed","Thu Jul 04 23:54:29 GMT 2024","Thu Jul 04 23:54:29 GMT 2024","86","Regression Test Suite","Infer flow API Tests","com.qa.tests.VersionsTest","com.qa.tests.VersionsTest","createVersionSuccessTest","createVersionSuccessTest",""
+"passed","Thu Jul 04 23:54:29 GMT 2024","Thu Jul 04 23:54:29 GMT 2024","81","Regression Test Suite","Infer flow API Tests","com.qa.tests.VersionsTest","com.qa.tests.VersionsTest","deleteVersionSuccessTest","deleteVersionSuccessTest",""
+"passed","Thu Jul 04 23:54:29 GMT 2024","Thu Jul 04 23:55:14 GMT 2024","44721","Regression Test Suite","Infer flow API Tests","com.qa.tests.InfersTest","com.qa.tests.InfersTest","sendPromptSuccessTest","sendPromptSuccessTest",""
