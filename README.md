@@ -12,8 +12,9 @@
 ### Locally:
 1. Clone the repo
 2. Setup Java (21 version is recommended)
-3. To execute tests run: "./mvnw clean test"
-4. To open report run: "brew install allure" and "allure serve"
+3. Spin up Python Server from this repo: https://github.com/openinnovationai/recruiting-qa-challenge
+4. To execute tests run: "./mvnw clean test"
+5. To open report run: "brew install allure" and "allure serve"
 
 ### Locally inside docker:
 1. Clone the repo
