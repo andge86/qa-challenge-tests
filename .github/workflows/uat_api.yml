@@ -45,13 +45,8 @@ jobs:
           cd recruiting-qa-challenge
           pip install -r requirements.txt
           fastapi dev application.py &
-          sleep 100 &
-          cd qa-challenge-tests $
-          sleep 2 &
-          cd ..
-          sleep 2
-          cd recruiting-qa-challenge $
-          sleep 2 &
+          sleep 200 &&
+          cd ../qa-challenge-tests &&
           ./mvnw clean test
 
       - name: Get Allure history
