@@ -5,6 +5,7 @@ on:
     inputs:
       run:
         description: 'Will run tests against certain environment'
+        type: choice
         required: true
         default: local
         options:
