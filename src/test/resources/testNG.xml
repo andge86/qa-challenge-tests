@@ -1,0 +1,9 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+<suite name="Regression Test Suite">
+    <test name="Infer flow API Tests">
+        <classes>
+<!--            <class name="com.qa.tests.ModelsTest" />-->
+            <class name="com.qa.tests.VersionsTest" />
+        </classes>
+    </test>
+</suite>
