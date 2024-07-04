@@ -14,14 +14,20 @@ import java.util.UUID;
 
 public class BaseService {
 
-    private final String BASE_URI = "http://localhost:8000";
 
-  private RequestSpecification requestSpecification;
+    private final String SERVER = (System.getenv("API_SERVER") != null)
+            ? System.getenv("API_SERVER") : "localhost";
+
+    private final String PORT = (System.getenv("API_PORT") != null)
+            ? System.getenv("API_PORT") : "8000";
+
+    private RequestSpecification requestSpecification;
     private ResponseSpecification responseSpecification;
 
     public BaseService(String uri) {
+        String url = "http://" + SERVER + ":" + PORT;
         requestSpecification = new RequestSpecBuilder()
-                .setBaseUri(BASE_URI + uri)
+                .setBaseUri(url + uri)
                 .log(LogDetail.ALL)
                 .build()
                 .filter(new AllureRestAssured())
@@ -46,12 +52,12 @@ public class BaseService {
     }
 
     protected Response callEndpoint(RequestSpecification requestSpecification, String method) {
-            Response response = switch (method) {
-                case "GET" -> requestSpecification.get();
-                case "POST" -> requestSpecification.post();
-                case "DELETE" -> requestSpecification.delete();
-                default -> requestSpecification.head();
-            };
+        Response response = switch (method) {
+            case "GET" -> requestSpecification.get();
+            case "POST" -> requestSpecification.post();
+            case "DELETE" -> requestSpecification.delete();
+            default -> requestSpecification.head();
+        };
 
         return response
                 .then()

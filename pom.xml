@@ -15,6 +15,7 @@
         <allure.version>2.27.0</allure.version>
         <restAssured.version>5.4.0</restAssured.version>
         <slf4j.version>2.0.13</slf4j.version>
+        <aspectj.version>1.9.21.2</aspectj.version>
     </properties>
 
     <dependencies>
@@ -56,11 +57,6 @@
             <version>${allure.version}</version>
         </dependency>
         <dependency>
-            <groupId>com.github.javafaker</groupId>
-            <artifactId>javafaker</artifactId>
-            <version>1.0.2</version>
-        </dependency>
-        <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
             <version>${slf4j.version}</version>
@@ -86,6 +82,9 @@
                     <suiteXmlFiles>
                         <suiteXmlFile>src/test/resources/testNG.xml</suiteXmlFile>
                     </suiteXmlFiles>
+                    <argLine>
+                        -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"
+                    </argLine>
                     <properties>
                         <property>
                             <name>listener</name>
@@ -93,6 +92,13 @@
                         </property>
                     </properties>
                 </configuration>
+                <dependencies>
+                    <dependency>
+                        <groupId>org.aspectj</groupId>
+                        <artifactId>aspectjweaver</artifactId>
+                        <version>${aspectj.version}</version>
+                    </dependency>
+                </dependencies>
             </plugin>
 
             <plugin>

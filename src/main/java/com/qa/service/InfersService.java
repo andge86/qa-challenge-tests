@@ -4,6 +4,7 @@ import com.qa.pojo.InferRequest;
 import com.qa.pojo.InferResponse;
 import com.qa.pojo.VersionRequest;
 import com.qa.pojo.VersionResponse;
+import io.qameta.allure.Step;
 import io.restassured.response.Response;
 
 import java.util.UUID;
@@ -14,7 +15,7 @@ public class InfersService extends BaseService {
         super("/models/" + modelUuid.toString() + "/versions/" + versionUuid.toString() + "/infer");
     }
 
-
+    @Step
     public Response postPrompt(InferRequest inferRequest) {
         return callEndpoint(createRequestWithBody(inferRequest), "POST");
     }

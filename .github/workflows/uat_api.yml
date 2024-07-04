@@ -1,13 +1,18 @@
-# This workflow will build a Java project with Maven
-
 name: Models API Tests
 
 on:
-  workflow_dispatch
-#  push:
-#    branches: [ main ]
-#  pull_request:
-#    branches: [ main ]
+  workflow_dispatch:
+    inputs:
+      run:
+        description: 'Will run tests against certain environment'
+        required: true
+        default: local
+        options:
+          - local
+          - remote
+
+#  schedule:
+#      - cron: "0 0 * * *"
 
 jobs:
   build:
@@ -17,13 +22,16 @@ jobs:
       contents: write
 
     steps:
-#      - uses: actions/checkout@v4
+      - uses: actions/checkout@v4
+        if: ${{ github.event.inputs.run == 'remote' }}
 
-      - name: Checkout of TEST repo
+      - name: Clone TEST repo
         uses: actions/checkout@v4
+        if: ${{ github.event.inputs.run == 'local' }}
 
-      - name: Checkout of DEV repo
+      - name: Clone remote DEV repo
         uses: actions/checkout@v4
+        if: ${{ github.event.inputs.run == 'local' }}
         with:
           repository: openinnovationai/recruiting-qa-challenge
           path: recruiting-qa-challenge
@@ -35,10 +43,12 @@ jobs:
 
       - name: Set up Python
         uses: actions/setup-python@v4
+        if: ${{ github.event.inputs.run == 'local' }}
         with:
-         python-version: '3.9'
+         python-version: '3.8'
 
       - name: Install Python dependencies and Run Python server script
+        if: ${{ github.event.inputs.run == 'local' }}
         run: |
           cd recruiting-qa-challenge
           pip install -r requirements.txt
@@ -46,6 +56,13 @@ jobs:
           sleep 100 &&
           cd .. &&
           ./mvnw clean test
+
+      - name: Run API Tests
+        if: ${{ github.event.inputs.run == 'remote' }}
+        env:
+          API_SERVER: "test.openinnovationai.com"
+          API_PORT: "8000"
+        run: ./mvnw clean test
 
       - name: Get Allure history
         uses: actions/checkout@v4

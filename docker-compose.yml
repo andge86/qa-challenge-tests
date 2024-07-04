@@ -1,0 +1,19 @@
+version: '3.8'
+
+services:
+  qa-server:
+    build:
+      context: https://github.com/openinnovationai/recruiting-qa-challenge.git
+      dockerfile: Dockerfile
+    container_name: qa-server
+
+  qa-tests:
+    environment:
+      - API_SERVER=qa-server
+      - API_PORT=8000
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: qa-tests
+    depends_on:
+      - qa-server
