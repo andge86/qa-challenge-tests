@@ -17,8 +17,6 @@ import java.util.Random;
 
 public class VersionsTest {
 
-
-    
     @Test
     public void createVersionSuccessTest() {
         int random = 10000 + new Random().nextInt(90000);
@@ -53,11 +51,11 @@ public class VersionsTest {
         VersionsService versionsService = new VersionsService(modelResponse.getUuid());
         VersionResponse versionResponse = versionsService.postVersionResponse(versionRequest);
 
-       Response response = versionsService.deleteVersion(versionResponse.getUuid());
-       Assert.assertEquals(response.statusCode(), HttpStatus.SC_OK);
+        Response response = versionsService.deleteVersion(versionResponse.getUuid());
+        Assert.assertEquals(response.statusCode(), HttpStatus.SC_OK);
 
-       List<VersionResponse> versionResponseList = versionsService.getVersionsResponse();
-       Assert.assertFalse(versionResponseList.contains(versionResponse));
+        List<VersionResponse> versionResponseList = versionsService.getVersionsResponse();
+        Assert.assertFalse(versionResponseList.contains(versionResponse));
     }
-    
+
 }
